@@ -11,13 +11,16 @@ import java.sql.*;
  */
 public class ConnectionProvider {
     public static Connection getCon(){
+        Connection con=null;
         try{
-            Class.forName(".com.mysql.jdbc.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost://3306/oems", "root", "minnie@143");
+            Class.forName("com.mysql.jdbc.Driver");
+   
+           con=DriverManager.getConnection("jdbc:mysql://localhost:3306/oems", "root", "minnie@143");
             return con;
         }
         catch(Exception e){
             return null;
         }
+        
     }
 }

@@ -194,8 +194,8 @@ public class studentDetails extends javax.swing.JFrame {
         //TO STORE IN DATABASE
         try
         {
-            Connection con=ConnectionProvider.getCon();
-            PreparedStatement ps=con.prepareStatement("insert into student values(?,?,?,?,?,?)");
+           Connection con=ConnectionProvider.getCon();
+           PreparedStatement ps=con.prepareStatement("insert into student values(?,?,?,?,?,?)");
             ps.setString(1, rollNo);
             ps.setString(2, name);
             ps.setString(3, gender);
@@ -204,12 +204,14 @@ public class studentDetails extends javax.swing.JFrame {
             ps.setString(6, marks);
             ps.executeUpdate();
             //JOptionPane.showMessageDialog(null, "successfully Updated");
+          
             setVisible(false);
             new instructionStudent(rollNo).setVisible(true);
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
+       
         
     }//GEN-LAST:event_jButton3ActionPerformed
 

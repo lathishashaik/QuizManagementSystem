@@ -23,9 +23,10 @@ public class addNewQuestion extends javax.swing.JFrame {
         initComponents();
         try{
             Connection con=ConnectionProvider.getCon();
+
             Statement st=con.createStatement();
             ResultSet rs=st.executeQuery("select count(id) from question");
-            if(rs.first()){
+            if(rs.next()){
                 int id=rs.getInt(1);
                 id+=1;
                 String str=String.valueOf(id);
@@ -88,7 +89,7 @@ public class addNewQuestion extends javax.swing.JFrame {
                 jLabel1MouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 77, 1070, 10));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -138,23 +139,33 @@ public class addNewQuestion extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 410, -1, -1));
+
+        jTextField2.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 720, 40));
+
+        jTextField3.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 720, -1));
 
+        jTextField4.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
             }
         });
         getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 720, -1));
+
+        jTextField5.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 720, -1));
 
+        jTextField6.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField6ActionPerformed(evt);
             }
         });
         getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 720, -1));
+
+        jTextField7.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 720, -1));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -198,7 +209,7 @@ public class addNewQuestion extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String id=jLabel1.getText();
+        String id=jLabel11.getText();
         String name=jTextField2.getText();
          String opt1=jTextField3.getText();
           String opt2=jTextField4.getText();
@@ -207,14 +218,14 @@ public class addNewQuestion extends javax.swing.JFrame {
              String answer=jTextField7.getText();
              try{
                  Connection con=ConnectionProvider.getCon();
-                 PreparedStatement ps=con.prepareStatement("insert int question values(?,?,?,?)");
+                 PreparedStatement ps=con.prepareStatement("insert into question values(?,?,?,?,?,?,?)");
                  ps.setString(1,id);
                  ps.setString(2,name);
                  ps.setString(3,opt1);
                  ps.setString(4,opt2);
                  ps.setString(5,opt3);
                  ps.setString(6,opt4);
-                 ps.setString(4,answer);
+                 ps.setString(7,answer);
                  ps.executeUpdate();
                  JFrame jf=new JFrame();
                  jf.setAlwaysOnTop(true);
