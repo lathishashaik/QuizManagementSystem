@@ -23,7 +23,7 @@ public class examStudent extends javax.swing.JFrame {
     public int min=0;
     public int sec=0;
     public int marks=0;
-    Timer time;
+  
     public void answerCheck(){
         String studentAnswer="";
         if(jRadioButton1.isSelected()){
@@ -100,6 +100,7 @@ public class examStudent extends javax.swing.JFrame {
     public examStudent() {
         initComponents();
     }
+      Timer time;
      public examStudent(String rollNo) {
         initComponents();
         jLabel12.setText(rollNo);
@@ -142,12 +143,13 @@ public class examStudent extends javax.swing.JFrame {
                if(sec==60){
                    sec=0;
                    min++;
-               }
-               if(min==20){
+                   if(min==20){
                    time.stop();
                    answerCheck();
                    submit();
                }
+               }
+               sec++;
             }
          });
          time.start();
